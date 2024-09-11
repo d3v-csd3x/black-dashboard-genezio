@@ -1,0 +1,24 @@
+backend:
+    language:
+        name: js
+        packageManager: npm
+    path: backend
+    scripts:
+        deploy: npm install
+        local: npm install
+frontend:
+    path: frontend
+    publish: build
+    scripts:
+        build: npm run build
+        deploy:
+            - npm install @genezio-sdk/${{projectName}}@1.0.0-${{stage}}
+            - npm install --legacy-peer-deps
+        start:
+            - npm install --legacy-peer-deps --silent
+            - npm run start --silent
+    sdk:
+        language: js
+name: black-dashboard-genezio
+region: us-east-1
+yamlVersion: 2
